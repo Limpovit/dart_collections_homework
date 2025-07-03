@@ -3,6 +3,9 @@ import 'dart:math';
 void main(List<String> args) {
   print('  ------------------- Task 1 -------------------');
   runTask1();
+
+  print('  ------------------- Task 2 -------------------');
+  runTask2();
 }
 
 void runTask1() {
@@ -39,8 +42,8 @@ void runTask1() {
 
   int sum = 0;
   for (var number = 0; number < numbers.length; number++) {
-    if (number % 3 == 0) {
-      sum += number;
+    if (numbers[number] % 3 == 0) {
+      sum += numbers[number];
     }
   }
   print('Cума чисел з масиву, що ділиться на 3 = $sum');
@@ -59,3 +62,19 @@ void runTask1() {
   print('$temp \n');
 }
 
+void runTask2() {
+// Task 2: Множини (Set)
+// Створіть окремий файл names.dart.
+// У цьому файлі створіть дві змінні:
+// List<String> ukrainianNames1
+// List<String> ukrainianNames2
+// За допомогою ChatGPT згенеруйте список із 50 українських імен та збережіть його в ukrainianNames1.
+// За допомогою DeepSeek згенеруйте інший список із 50 українських імен для ukrainianNames2.
+// Поверніться до основного файлу з домашнім завданням (lib/main.dart).
+// Створіть Set uniqueNames1 і додайте до нього всі імена з ukrainianNames1.
+// Створіть Set uniqueNames2 і додайте до нього всі імена з ukrainianNames2.
+// Створіть новий Set зі спільними іменами обох списків. Виведіть кількість елементів у цій множині.
+// Створіть множину з іменами, що є в uniqueNames1, але яких немає в uniqueNames2. Виведіть ці імена.
+// Створіть множину з іменами, що є в uniqueNames2, але яких немає в uniqueNames1. Виведіть ці імена.
+
+}
