@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:dart_collections_homework/names.dart';
+
 void main(List<String> args) {
   print('  ------------------- Task 1 -------------------');
   runTask1();
@@ -73,8 +75,22 @@ void runTask2() {
 // Поверніться до основного файлу з домашнім завданням (lib/main.dart).
 // Створіть Set uniqueNames1 і додайте до нього всі імена з ukrainianNames1.
 // Створіть Set uniqueNames2 і додайте до нього всі імена з ukrainianNames2.
+final uniqueNames1 = Set.from(ukrainianNames1);
+final uniqueNames2 = {...ukrainianNames2};
+
+
 // Створіть новий Set зі спільними іменами обох списків. Виведіть кількість елементів у цій множині.
+final intersection = uniqueNames1.intersection(uniqueNames2);
+print('Cпільні імена: $intersection');
+print('Кількість спільних імен: ${intersection.length}');
 // Створіть множину з іменами, що є в uniqueNames1, але яких немає в uniqueNames2. Виведіть ці імена.
+final difference = uniqueNames1.difference(uniqueNames2);
+print('Є в uniqueNames1, але яких немає в uniqueNames2: $difference');
+print('Кількість різних імен: ${difference.length}');
 // Створіть множину з іменами, що є в uniqueNames2, але яких немає в uniqueNames1. Виведіть ці імена.
+final difference2 = uniqueNames2.difference(uniqueNames1);
+print('Є в uniqueNames2, але яких немає в uniqueNames1: $difference2');
+print('Кількість різних імен: ${difference2.length}');
+
 
 }
