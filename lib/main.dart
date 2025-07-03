@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:dart_collections_homework/names.dart';
+import 'package:word_generator/word_generator.dart';
 
 void main(List<String> args) {
   print('  ------------------- Task 1 -------------------');
@@ -8,6 +9,9 @@ void main(List<String> args) {
 
   print('  ------------------- Task 2 -------------------');
   runTask2();
+
+  print('  ------------------- Task 2 -------------------');
+  runTask3();
 }
 
 void runTask1() {
@@ -65,32 +69,57 @@ void runTask1() {
 }
 
 void runTask2() {
-// Task 2: Множини (Set)
-// Створіть окремий файл names.dart.
-// У цьому файлі створіть дві змінні:
-// List<String> ukrainianNames1
-// List<String> ukrainianNames2
-// За допомогою ChatGPT згенеруйте список із 50 українських імен та збережіть його в ukrainianNames1.
-// За допомогою DeepSeek згенеруйте інший список із 50 українських імен для ukrainianNames2.
-// Поверніться до основного файлу з домашнім завданням (lib/main.dart).
-// Створіть Set uniqueNames1 і додайте до нього всі імена з ukrainianNames1.
-// Створіть Set uniqueNames2 і додайте до нього всі імена з ukrainianNames2.
-final uniqueNames1 = Set.from(ukrainianNames1);
-final uniqueNames2 = {...ukrainianNames2};
+  // Task 2: Множини (Set)
+  // Створіть окремий файл names.dart.
+  // У цьому файлі створіть дві змінні:
+  // List<String> ukrainianNames1
+  // List<String> ukrainianNames2
+  // За допомогою ChatGPT згенеруйте список із 50 українських імен та збережіть його в ukrainianNames1.
+  // За допомогою DeepSeek згенеруйте інший список із 50 українських імен для ukrainianNames2.
+  // Поверніться до основного файлу з домашнім завданням (lib/main.dart).
+  // Створіть Set uniqueNames1 і додайте до нього всі імена з ukrainianNames1.
+  // Створіть Set uniqueNames2 і додайте до нього всі імена з ukrainianNames2.
+  final uniqueNames1 = Set.from(ukrainianNames1);
+  final uniqueNames2 = {...ukrainianNames2};
 
+  // Створіть новий Set зі спільними іменами обох списків. Виведіть кількість елементів у цій множині.
+  final intersection = uniqueNames1.intersection(uniqueNames2);
+  print('Cпільні імена: $intersection');
+  print('Кількість спільних імен: ${intersection.length}');
+  // Створіть множину з іменами, що є в uniqueNames1, але яких немає в uniqueNames2. Виведіть ці імена.
+  final difference = uniqueNames1.difference(uniqueNames2);
+  print('Є в uniqueNames1, але яких немає в uniqueNames2: $difference');
+  print('Кількість різних імен: ${difference.length}');
+  // Створіть множину з іменами, що є в uniqueNames2, але яких немає в uniqueNames1. Виведіть ці імена.
+  final difference2 = uniqueNames2.difference(uniqueNames1);
+  print('Є в uniqueNames2, але яких немає в uniqueNames1: $difference2');
+  print('Кількість різних імен: ${difference2.length}');
+}
 
-// Створіть новий Set зі спільними іменами обох списків. Виведіть кількість елементів у цій множині.
-final intersection = uniqueNames1.intersection(uniqueNames2);
-print('Cпільні імена: $intersection');
-print('Кількість спільних імен: ${intersection.length}');
-// Створіть множину з іменами, що є в uniqueNames1, але яких немає в uniqueNames2. Виведіть ці імена.
-final difference = uniqueNames1.difference(uniqueNames2);
-print('Є в uniqueNames1, але яких немає в uniqueNames2: $difference');
-print('Кількість різних імен: ${difference.length}');
-// Створіть множину з іменами, що є в uniqueNames2, але яких немає в uniqueNames1. Виведіть ці імена.
-final difference2 = uniqueNames2.difference(uniqueNames1);
-print('Є в uniqueNames2, але яких немає в uniqueNames1: $difference2');
-print('Кількість різних імен: ${difference2.length}');
+void runTask3() {
+  //   Task 3: Словники (Map)
+  // Підключіть до проєкту пакет word_generator (див. https://pub.dev/packages/word_generator).
+  // Створіть список nounsList із 50 випадкових слів (як це зробити, дивіться в документації: https://pub.dev/packages/word_generator#randomnouns).
+  // Із nounsList створіть Map<String, int> nounsMap, де:
+  // ключ — слово;
+  // значення — кількість символів у цьому слові.
+  // Створіть нову змінну Map<String, int> tempNouns.
+  // Додайте у tempNouns лише ті пари зі nounsMap, де довжина слова — парне число.
+  // Виведіть всі ключі зі tempNouns.
 
+  final wordGenerator = WordGenerator();
+  List<String> nouns = wordGenerator.randomNouns(50);
 
+  final Map<String, int> nounsMap = {};
+
+  for (var noun in nouns) {
+    nounsMap[noun] = noun.length;
+  }
+
+  print('Map with nouns: $nounsMap');
+
+  final tempNouns = Map.fromEntries(
+    nounsMap.entries.where((entry) => entry.value % 2 == 0),
+  );
+  print('Keys with even numbers: ${tempNouns.keys.join(', ')}');
 }
